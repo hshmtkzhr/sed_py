@@ -8,7 +8,7 @@ cp sed.py /path/to/tool # and set add envrinment variable PATH
 ```
 
 ## help
-```
+```bash
 $ ./sed.py -h
 usage: sed.py [-h] [-f FILE] [-ow] before after
 
@@ -21,4 +21,44 @@ optional arguments:
   -h, --help            show this help message and exit
   -f FILE, --file FILE  /path/to/file
   -ow, --overwrite      overwrite file
+```
+
+## sample.txt
+```bash
+$ cat /tmp/sample.txt
+nara
+osaka
+kyoto
+kanagawa
+tokyo
+saitama
+chiba
+```
+
+## replace and output to stdout
+```bash
+$ ./sed.py -f /tmp/sample.txt 'kyoto' 'kyoto\nkobe'
+nara
+osaka
+kyoto
+kobe
+kanagawa
+tokyo
+saitama
+chiba
+```
+
+## replace and overwrite file
+```bash
+$ ./sed.py -f /tmp/sample.txt 'kyoto' 'kyoto\nkobe' --overwrite
+
+$ cat /tmp/sample.txt 
+nara
+osaka
+kyoto
+kobe
+kanagawa
+tokyo
+saitama
+chiba
 ```
